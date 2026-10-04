@@ -4,149 +4,247 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kinequill | BPT Learning Platform</title>
+<title>Kinequill | BPT Study Platform</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial, sans-serif;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f5f7fa;
-  color: #172033;
+body{
+  background:#f5f7fb;
+  color:#172033;
+  line-height:1.5;
 }
 
-header {
-  background: #172033;
-  color: white;
-  padding: 18px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header{
+  background:#111827;
+  color:white;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
-.logo {
-  font-size: 26px;
-  font-weight: bold;
+.logo{
+  font-size:25px;
+  font-weight:bold;
+  letter-spacing:.5px;
 }
 
-.tagline {
-  font-size: 13px;
-  opacity: 0.8;
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-size:14px;
 }
 
-.hero {
-  text-align: center;
-  padding: 65px 20px;
-  background: white;
+.hero{
+  padding:65px 7%;
+  background:linear-gradient(135deg,#eef2ff,#ffffff);
 }
 
-.hero h1 {
-  font-size: 42px;
-  margin-bottom: 15px;
+.hero h1{
+  font-size:42px;
+  max-width:700px;
+  margin-bottom:15px;
 }
 
-.hero p {
-  font-size: 18px;
-  color: #5d6675;
-  margin-bottom: 28px;
+.hero p{
+  max-width:650px;
+  color:#5b6475;
+  font-size:17px;
+  margin-bottom:25px;
 }
 
-.search {
-  width: 90%;
-  max-width: 600px;
-  padding: 15px 18px;
-  border: 1px solid #ccd2da;
-  border-radius: 10px;
-  font-size: 16px;
+.btn{
+  border:none;
+  background:#111827;
+  color:white;
+  padding:13px 22px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:15px;
 }
 
-.section {
-  padding: 45px 7%;
+.btn:hover{
+  opacity:.9;
 }
 
-.section h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 28px;
+.section{
+  padding:50px 7%;
 }
 
-.years {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+.section h2{
+  font-size:30px;
+  margin-bottom:25px;
 }
 
-.card {
-  background: white;
-  padding: 28px;
-  border-radius: 14px;
-  border: 1px solid #e1e5eb;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transition: 0.2s;
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:18px;
 }
 
-.card:hover {
-  transform: translateY(-4px);
+.card{
+  background:white;
+  padding:24px;
+  border-radius:14px;
+  box-shadow:0 5px 20px rgba(0,0,0,.06);
 }
 
-.card h3 {
-  margin-bottom: 10px;
-  font-size: 21px;
+.card h3{
+  margin-bottom:8px;
 }
 
-.card p {
-  color: #667085;
-  margin-bottom: 18px;
-  line-height: 1.5;
+.card p{
+  color:#687386;
+  font-size:14px;
 }
 
-button {
-  border: none;
-  background: #172033;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
+.planner{
+  background:white;
+  max-width:850px;
+  margin:auto;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 8px 30px rgba(0,0,0,.08);
 }
 
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 18px;
+label{
+  display:block;
+  font-weight:bold;
+  margin-top:18px;
+  margin-bottom:7px;
 }
 
-.feature {
-  background: white;
-  padding: 22px;
-  border-radius: 12px;
-  border: 1px solid #e1e5eb;
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #d6dbe5;
+  border-radius:8px;
+  font-size:15px;
+  outline:none;
 }
 
-.feature h3 {
-  margin-bottom: 8px;
+textarea{
+  min-height:130px;
+  resize:vertical;
 }
 
-.feature p {
-  color: #667085;
-  line-height: 1.5;
+input:focus,select:focus,textarea:focus{
+  border-color:#111827;
 }
 
-footer {
-  background: #172033;
-  color: white;
-  text-align: center;
-  padding: 25px;
-  margin-top: 30px;
+.planner button{
+  margin-top:22px;
 }
 
-#message {
-  text-align: center;
-  margin-top: 20px;
-  color: #667085;
+.result{
+  margin-top:30px;
+}
+
+.progress-box{
+  background:#edf0f5;
+  border-radius:20px;
+  overflow:hidden;
+  height:18px;
+  margin:12px 0;
+}
+
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:#111827;
+  transition:.3s;
+}
+
+.progress-text{
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.day{
+  background:#f8fafc;
+  border:1px solid #e2e6ed;
+  padding:17px;
+  margin:12px 0;
+  border-radius:10px;
+}
+
+.day h3{
+  margin-bottom:8px;
+}
+
+.topic{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:7px 0;
+}
+
+.topic input{
+  width:auto;
+}
+
+.completed{
+  text-decoration:line-through;
+  color:#8992a3;
+}
+
+.small{
+  color:#687386;
+  font-size:13px;
+}
+
+footer{
+  background:#111827;
+  color:white;
+  text-align:center;
+  padding:30px;
+  margin-top:30px;
+}
+
+.hidden{
+  display:none;
+}
+
+@media(max-width:600px){
+
+  header{
+    padding:15px 5%;
+  }
+
+  nav a{
+    margin-left:8px;
+    font-size:12px;
+  }
+
+  .hero{
+    padding:45px 5%;
+  }
+
+  .hero h1{
+    font-size:31px;
+  }
+
+  .section{
+    padding:40px 5%;
+  }
+
+  .section h2{
+    font-size:25px;
+  }
+
+  .planner{
+    padding:20px;
+  }
 }
 </style>
 </head>
@@ -154,124 +252,651 @@ footer {
 <body>
 
 <header>
-  <div class="logo">Kinequill</div>
-  <div class="tagline">BPT Learning Platform</div>
+
+<div class="logo">Kinequill</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#planner">Planner</a>
+<a href="#features">Resources</a>
+</nav>
+
 </header>
 
-<section class="hero">
-  <h1>Learn BPT. Understand Better.</h1>
-  <p>A free learning platform designed for Bachelor of Physiotherapy students.</p>
 
-  <input
-    type="text"
-    class="search"
-    id="searchBox"
-    placeholder="Search subjects, notes, MCQs..."
-    onkeyup="searchContent()"
-  >
+<section class="hero" id="home">
+
+<h1>Study smarter. Plan your BPT journey.</h1>
+
+<p>
+Kinequill is a student-focused platform for BPT notes, MCQs, practical preparation and personalized study planning.
+</p>
+
+<button class="btn" onclick="goPlanner()">
+Create My Study Plan
+</button>
+
 </section>
+
 
 <section class="section">
-  <h2>BPT Academic Years</h2>
 
-  <div class="years">
+<h2>Explore Your Year</h2>
 
-    <div class="card searchable">
-      <h3>Year 1</h3>
-      <p>Explore first-year BPT subjects, study material and practice resources.</p>
-      <button onclick="showMessage('Year 1 content will be added here.')">
-        Explore
-      </button>
-    </div>
+<div class="cards">
 
-    <div class="card searchable">
-      <h3>Year 2</h3>
-      <p>Explore second-year BPT subjects, study material and practice resources.</p>
-      <button onclick="showMessage('Year 2 content will be added here.')">
-        Explore
-      </button>
-    </div>
+<div class="card">
+<h3>Year 1</h3>
+<p>Build your foundation with basic BPT subjects and concepts.</p>
+</div>
 
-    <div class="card searchable">
-      <h3>Year 3</h3>
-      <p>Explore third-year BPT subjects, study material and practice resources.</p>
-      <button onclick="showMessage('Year 3 content will be added here.')">
-        Explore
-      </button>
-    </div>
+<div class="card">
+<h3>Year 2</h3>
+<p>Organize your core subjects and practical preparation.</p>
+</div>
 
-    <div class="card searchable">
-      <h3>Year 4</h3>
-      <p>Explore fourth-year BPT subjects, study material and practice resources.</p>
-      <button onclick="showMessage('Year 4 content will be added here.')">
-        Explore
-      </button>
-    </div>
+<div class="card">
+<h3>Year 3</h3>
+<p>Manage advanced physiotherapy learning and clinical preparation.</p>
+</div>
 
-  </div>
+<div class="card">
+<h3>Year 4</h3>
+<p>Prepare systematically for final-year subjects and clinical learning.</p>
+</div>
 
-  <div id="message"></div>
+</div>
+
 </section>
 
-<section class="section">
-  <h2>What Kinequill Will Offer</h2>
 
-  <div class="features">
+<section class="section" id="planner">
 
-    <div class="feature searchable">
-      <h3>📚 Syllabus</h3>
-      <p>Organized BPT syllabus and subject-wise learning structure.</p>
-    </div>
+<h2>🎯 Personal Study Planner</h2>
 
-    <div class="feature searchable">
-      <h3>📖 Notes</h3>
-      <p>Easy-to-understand study material for BPT students.</p>
-    </div>
+<div class="planner">
 
-    <div class="feature searchable">
-      <h3>📝 MCQs</h3>
-      <p>Practice questions for revision and examination preparation.</p>
-    </div>
+<label>Academic Year</label>
 
-    <div class="feature searchable">
-      <h3>🎯 Viva & Practical</h3>
-      <p>Resources for practical examinations and viva preparation.</p>
-    </div>
+<select id="year">
 
-  </div>
+<option value="1">BPT Year 1</option>
+<option value="2">BPT Year 2</option>
+<option value="3">BPT Year 3</option>
+<option value="4">BPT Year 4</option>
+
+</select>
+
+
+<label>Subjects</label>
+
+<input
+id="subjects"
+type="text"
+placeholder="Example: Pathology, Pharmacology, Biomechanics"
+/>
+
+
+<label>Topics you need to complete</label>
+
+<textarea
+id="topics"
+placeholder="Write one topic per line.
+
+Example:
+Cell injury
+Inflammation
+Necrosis
+Apoptosis
+Degeneration
+Pharmacokinetics
+Drug absorption
+Drug distribution"
+></textarea>
+
+
+<label>Study hours available per day</label>
+
+<input
+id="hours"
+type="number"
+min="1"
+max="12"
+value="2"
+/>
+
+
+<label>Target / Exam Date</label>
+
+<input
+id="examDate"
+type="date"
+/>
+
+
+<button class="btn" onclick="createPlan()">
+Generate Study Plan
+</button>
+
+
+<div id="result" class="result hidden">
+
+<h2>Your Plan</h2>
+
+<p id="planInfo" class="small"></p>
+
+<div class="progress-text">
+Progress: <span id="progressText">0%</span>
+</div>
+
+<div class="progress-box">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div id="schedule"></div>
+
+</div>
+
+</div>
+
 </section>
+
+
+<section class="section" id="features">
+
+<h2>What Kinequill will offer</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>📚 Syllabus</h3>
+<p>Organized BPT syllabus with subjects and topics.</p>
+</div>
+
+<div class="card">
+<h3>📝 Notes</h3>
+<p>Easy-to-understand exam-focused study material.</p>
+</div>
+
+<div class="card">
+<h3>🧠 MCQs</h3>
+<p>Practice questions for revision and self-testing.</p>
+</div>
+
+<div class="card">
+<h3>🩺 Practical & Viva</h3>
+<p>Practical procedures, viva questions and preparation resources.</p>
+</div>
+
+<div class="card">
+<h3>🎯 Smart Planner</h3>
+<p>Create a study schedule according to your available time and target date.</p>
+</div>
+
+<div class="card">
+<h3>📈 Progress Tracking</h3>
+<p>Track completed topics and see your study progress.</p>
+</div>
+
+</div>
+
+</section>
+
 
 <footer>
-  <p>© 2026 Kinequill. Free BPT Learning Platform.</p>
+
+<p>© 2026 Kinequill — Built for BPT students</p>
+
 </footer>
+
 
 <script>
 
-function showMessage(text) {
-  document.getElementById("message").innerText = text;
+let currentTopics = [];
+
+let storageKey = "kinequillStudyPlan";
+
+
+function goPlanner(){
+
+document.getElementById("planner").scrollIntoView({
+behavior:"smooth"
+});
+
 }
 
-function searchContent() {
 
-  let query = document
-    .getElementById("searchBox")
-    .value
-    .toLowerCase();
+function createPlan(){
 
-  let items = document.querySelectorAll(".searchable");
+let year = document.getElementById("year").value;
 
-  items.forEach(function(item) {
+let subjects = document.getElementById("subjects").value.trim();
 
-    let text = item.innerText.toLowerCase();
+let topicText = document.getElementById("topics").value.trim();
 
-    if (text.includes(query)) {
-      item.style.display = "";
-    } else {
-      item.style.display = "none";
-    }
+let hours = Number(document.getElementById("hours").value);
 
-  });
+let examDate = document.getElementById("examDate").value;
+
+
+if(!subjects){
+
+alert("Please enter your subjects.");
+
+return;
+
 }
+
+
+if(!topicText){
+
+alert("Please enter the topics you want to complete.");
+
+return;
+
+}
+
+
+if(!hours || hours < 1){
+
+alert("Please enter at least 1 study hour per day.");
+
+return;
+
+}
+
+
+if(!examDate){
+
+alert("Please select your target/exam date.");
+
+return;
+
+}
+
+
+currentTopics = topicText
+.split("\n")
+.map(x => x.trim())
+.filter(x => x !== "")
+.map(x => ({
+name:x,
+completed:false
+}));
+
+
+let today = new Date();
+
+today.setHours(0,0,0,0);
+
+let target = new Date(examDate);
+
+target.setHours(0,0,0,0);
+
+
+let difference =
+Math.ceil(
+(target - today) /
+(1000*60*60*24)
+);
+
+
+if(difference <= 0){
+
+alert("Please select a future date.");
+
+return;
+
+}
+
+
+localStorage.setItem(
+storageKey,
+JSON.stringify({
+year,
+subjects,
+hours,
+examDate,
+topics:currentTopics
+})
+);
+
+
+document.getElementById("result")
+.classList.remove("hidden");
+
+
+document.getElementById("planInfo").innerText =
+"BPT Year " + year +
+" • " +
+subjects +
+" • " +
+hours +
+" hours/day • " +
+difference +
+" days available";
+
+
+makeSchedule(difference, hours);
+
+updateProgress();
+
+}
+
+
+function makeSchedule(days, hours){
+
+let schedule = document.getElementById("schedule");
+
+schedule.innerHTML = "";
+
+
+let totalTopics = currentTopics.length;
+
+
+/*
+Approximate topics per day.
+The planner spreads topics across
+the available days.
+*/
+
+let topicsPerDay =
+Math.max(
+1,
+Math.ceil(totalTopics / days)
+);
+
+
+let topicIndex = 0;
+
+
+for(let day=1; day<=days && topicIndex<totalTopics; day++){
+
+let box = document.createElement("div");
+
+box.className = "day";
+
+
+let heading =
+document.createElement("h3");
+
+heading.innerText =
+"Day " + day;
+
+
+box.appendChild(heading);
+
+
+let count = 0;
+
+
+while(
+topicIndex < totalTopics &&
+count < topicsPerDay
+){
+
+let topic = currentTopics[topicIndex];
+
+
+let row =
+document.createElement("label");
+
+row.className = "topic";
+
+
+let checkbox =
+document.createElement("input");
+
+checkbox.type = "checkbox";
+
+checkbox.checked = topic.completed;
+
+
+checkbox.onchange = function(){
+
+topic.completed = checkbox.checked;
+
+savePlan();
+
+updateProgress();
+
+};
+
+
+let text =
+document.createElement("span");
+
+text.innerText = topic.name;
+
+
+if(topic.completed){
+
+text.classList.add("completed");
+
+}
+
+
+checkbox.addEventListener(
+"change",
+function(){
+
+if(checkbox.checked){
+
+text.classList.add("completed");
+
+}else{
+
+text.classList.remove("completed");
+
+}
+
+});
+
+
+row.appendChild(checkbox);
+
+row.appendChild(text);
+
+box.appendChild(row);
+
+
+topicIndex++;
+
+count++;
+
+}
+
+
+let study =
+document.createElement("p");
+
+study.className = "small";
+
+study.innerText =
+"Suggested study time: " +
+hours +
+" hour(s)";
+
+
+box.appendChild(study);
+
+schedule.appendChild(box);
+
+}
+
+}
+
+
+function updateProgress(){
+
+let total = currentTopics.length;
+
+
+if(total === 0){
+
+return;
+
+}
+
+
+let completed =
+currentTopics.filter(
+x => x.completed
+).length;
+
+
+let percent =
+Math.round(
+(completed / total) * 100
+);
+
+
+document.getElementById(
+"progressText"
+).innerText =
+percent + "%";
+
+
+document.getElementById(
+"progressBar"
+).style.width =
+percent + "%";
+
+
+savePlan();
+
+}
+
+
+function savePlan(){
+
+let old =
+localStorage.getItem(storageKey);
+
+
+if(!old){
+
+return;
+
+}
+
+
+let data =
+JSON.parse(old);
+
+
+data.topics =
+currentTopics;
+
+
+localStorage.setItem(
+storageKey,
+JSON.stringify(data)
+);
+
+}
+
+
+function loadPlan(){
+
+let saved =
+localStorage.getItem(storageKey);
+
+
+if(!saved){
+
+return;
+
+}
+
+
+try{
+
+let data =
+JSON.parse(saved);
+
+
+currentTopics =
+data.topics || [];
+
+
+document.getElementById("year").value =
+data.year || "1";
+
+
+document.getElementById("subjects").value =
+data.subjects || "";
+
+
+document.getElementById("hours").value =
+data.hours || 2;
+
+
+document.getElementById("examDate").value =
+data.examDate || "";
+
+
+if(currentTopics.length > 0){
+
+document.getElementById("result")
+.classList.remove("hidden");
+
+
+let today = new Date();
+
+today.setHours(0,0,0,0);
+
+let target =
+new Date(data.examDate);
+
+target.setHours(0,0,0,0);
+
+
+let days =
+Math.max(
+1,
+Math.ceil(
+(target-today) /
+(1000*60*60*24)
+)
+);
+
+
+document.getElementById("planInfo").innerText =
+"BPT Year " +
+data.year +
+" • " +
+data.subjects +
+" • " +
+data.hours +
+" hours/day";
+
+
+makeSchedule(
+days,
+Number(data.hours)
+);
+
+
+updateProgress();
+
+}
+
+}catch(error){
+
+console.log("No saved plan found.");
+
+}
+
+}
+
+
+window.onload =
+function(){
+
+loadPlan();
+
+};
 
 </script>
 
