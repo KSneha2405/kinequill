@@ -2,249 +2,207 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Kinequill | BPT Study Platform</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101426">
+<title>Kinequill — Study Quest</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial, sans-serif;
+:root{
+  --bg:#101426;
+  --panel:#191f36;
+  --panel2:#202943;
+  --text:#f5f7ff;
+  --muted:#a4aec8;
+  --line:#303a59;
+  --purple:#9c83ff;
+  --cyan:#63e4df;
+  --yellow:#ffdc76;
+  --green:#83e6a0;
+  --pink:#ff8ac7;
 }
-
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  background:#f5f7fb;
-  color:#172033;
-  line-height:1.5;
+  margin:0;
+  background:
+    radial-gradient(ellipse at 10% 0%,#33285c 0,transparent 35%),
+    radial-gradient(ellipse at 100% 25%,#173f53 0,transparent 30%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,Arial,sans-serif;
+  line-height:1.55;
 }
-
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:var(--cyan);text-decoration:none}
+button:focus-visible,a:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--cyan);outline-offset:3px
+}
 header{
-  background:#111827;
-  color:white;
-  padding:18px 7%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
-  top:0;
-  z-index:10;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:14px;padding:17px 5%;
+  border-bottom:1px solid var(--line);
+  background:#101426ed;position:sticky;top:0;z-index:10;
+  backdrop-filter:blur(15px)
 }
-
-.logo{
-  font-size:25px;
-  font-weight:bold;
-  letter-spacing:.5px;
-}
-
-nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:20px;
-  font-size:14px;
-}
-
+.logo{font-size:25px;font-weight:900;letter-spacing:-1px}
+.logo span{color:var(--cyan)}
+nav{display:flex;gap:14px;flex-wrap:wrap}
+nav a{font-size:13px;color:var(--muted)}
+nav a:hover{color:white}
+.wrap{max-width:1180px;margin:auto;padding:28px 5%}
 .hero{
-  padding:65px 7%;
-  background:linear-gradient(135deg,#eef2ff,#ffffff);
+  display:grid;grid-template-columns:1.3fr .7fr;gap:25px;
+  align-items:center;padding-top:55px;padding-bottom:45px
 }
-
-.hero h1{
-  font-size:42px;
-  max-width:700px;
-  margin-bottom:15px;
+.eyebrow{
+  display:inline-block;border:1px solid #6357a8;background:#302850;
+  color:#d5caff;border-radius:30px;padding:6px 12px;font-size:12px;
+  letter-spacing:1px;text-transform:uppercase
 }
-
-.hero p{
-  max-width:650px;
-  color:#5b6475;
-  font-size:17px;
-  margin-bottom:25px;
+h1{font-size:clamp(34px,5.5vw,59px);line-height:1.05;letter-spacing:-2px;margin:18px 0}
+h2{font-size:27px;letter-spacing:-.6px;margin:0 0 17px}
+h3{margin-top:0}
+p{margin-top:7px}
+.muted{color:var(--muted)}
+.small{font-size:12px;color:var(--muted)}
+.gradient{
+  background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
+  -webkit-background-clip:text;background-clip:text;color:transparent
 }
-
 .btn{
-  border:none;
-  background:#111827;
-  color:white;
-  padding:13px 22px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:15px;
+  border:0;border-radius:10px;padding:11px 16px;
+  font-weight:750;background:linear-gradient(110deg,#9c83ff,#6d9dff);
+  color:#101426;box-shadow:0 4px 18px #8272ff20;
 }
-
-.btn:hover{
-  opacity:.9;
+.btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn.secondary{
+  background:#272f4c;color:var(--text);
+  border:1px solid var(--line);box-shadow:none
 }
-
-.section{
-  padding:50px 7%;
+.btn.success{background:var(--green)}
+.btn.danger{background:#4b263d;color:#ffbadb;box-shadow:none}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.hero-art{
+  min-height:260px;display:grid;place-items:center;
+  border:1px solid #4a477c;border-radius:25px;
+  background:linear-gradient(145deg,#29284e,#172a43);
+  position:relative;overflow:hidden
 }
-
-.section h2{
-  font-size:30px;
-  margin-bottom:25px;
+.orb{
+  width:150px;height:150px;border-radius:50%;
+  display:grid;place-items:center;font-size:68px;
+  background:radial-gradient(circle at 30% 20%,#fff4c4,#b4a1ff 45%,#4d4d9e);
+  box-shadow:0 0 65px #9c83ff66;
+  animation:float 4s ease-in-out infinite
 }
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:18px;
+@keyframes float{50%{transform:translateY(-12px) rotate(5deg)}}
+.art-caption{
+  position:absolute;bottom:18px;left:0;right:0;text-align:center;
+  font-size:12px;color:#c8d3f7;letter-spacing:2px
 }
-
-.card{
-  background:white;
-  padding:24px;
-  border-radius:14px;
-  box-shadow:0 5px 20px rgba(0,0,0,.06);
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:15px 0
 }
-
-.card h3{
-  margin-bottom:8px;
+.stat,.card{
+  background:linear-gradient(145deg,#1d2540,#181e33);
+  border:1px solid var(--line);border-radius:17px;padding:20px;
+  box-shadow:0 7px 25px #00000012;min-width:0
 }
-
-.card p{
-  color:#687386;
-  font-size:14px;
+.stat strong{font-size:29px;display:block;letter-spacing:-1px}
+.stat span{font-size:12px;color:var(--muted)}
+.stat .icon{font-size:21px}
+.section-head{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:12px;margin-bottom:17px
 }
-
-.planner{
-  background:white;
-  max-width:850px;
-  margin:auto;
-  padding:30px;
-  border-radius:16px;
-  box-shadow:0 8px 30px rgba(0,0,0,.08);
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));
+  gap:15px
 }
-
-label{
-  display:block;
-  font-weight:bold;
-  margin-top:18px;
-  margin-bottom:7px;
+.card p{color:var(--muted)}
+.card .big-icon{font-size:32px;margin-bottom:10px}
+.card h3{margin-bottom:7px}
+.card .btn{margin-top:10px}
+.progress-track{
+  height:12px;background:#0e1324;border:1px solid var(--line);
+  border-radius:20px;overflow:hidden
 }
-
+.progress-fill{
+  height:100%;width:0;
+  background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
+  border-radius:20px;transition:width .35s
+}
+.badge{
+  display:inline-block;padding:6px 10px;margin:4px;
+  background:#302a50;border:1px solid #62539a;
+  border-radius:9px;color:#e1d8ff;font-size:12px
+}
+.field-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:14px
+}
+label{display:block;font-size:13px;font-weight:750;margin:14px 0 6px}
 input,select,textarea{
-  width:100%;
-  padding:12px;
-  border:1px solid #d6dbe5;
-  border-radius:8px;
-  font-size:15px;
-  outline:none;
+  width:100%;background:#10172a;color:var(--text);
+  border:1px solid #394565;border-radius:9px;padding:12px
 }
-
-textarea{
-  min-height:130px;
-  resize:vertical;
+textarea{min-height:125px;resize:vertical}
+input::placeholder,textarea::placeholder{color:#7783a1}
+.action-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}
+.task{
+  display:flex;align-items:flex-start;gap:10px;padding:13px 0;
+  border-bottom:1px solid var(--line)
 }
-
-input:focus,select:focus,textarea:focus{
-  border-color:#111827;
+.task input,.option input{width:auto;margin-top:5px}
+.task-name{flex:1;overflow-wrap:anywhere}
+.done{text-decoration:line-through;color:#7e8aa7}
+.task-actions{display:flex;gap:5px}
+.task-actions button{padding:6px 9px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:17px}
+.tabs button{
+  background:#202943;border:1px solid var(--line);color:var(--text);
+  padding:9px 13px;border-radius:9px
 }
-
-.planner button{
-  margin-top:22px;
+.tabs button.active{background:var(--purple);color:#101426}
+.question{
+  background:#141b2f;border:1px solid var(--line);
+  border-radius:13px;padding:18px;margin:13px 0
 }
-
-.result{
-  margin-top:30px;
+.option{display:flex;gap:9px;align-items:flex-start;font-weight:400;padding:8px 0}
+.feedback{
+  white-space:pre-wrap;background:#202943;border:1px solid #445174;
+  padding:14px;border-radius:10px;margin-top:13px
 }
-
-.progress-box{
-  background:#edf0f5;
-  border-radius:20px;
-  overflow:hidden;
-  height:18px;
-  margin:12px 0;
+.notice{
+  background:#292642;border:1px solid #5b507b;padding:14px;
+  border-radius:12px;font-size:13px;color:#ddd7ff
 }
-
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:#111827;
-  transition:.3s;
-}
-
-.progress-text{
-  font-weight:bold;
-  margin-bottom:15px;
-}
-
-.day{
-  background:#f8fafc;
-  border:1px solid #e2e6ed;
-  padding:17px;
-  margin:12px 0;
-  border-radius:10px;
-}
-
-.day h3{
-  margin-bottom:8px;
-}
-
-.topic{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  padding:7px 0;
-}
-
-.topic input{
-  width:auto;
-}
-
-.completed{
-  text-decoration:line-through;
-  color:#8992a3;
-}
-
-.small{
-  color:#687386;
-  font-size:13px;
-}
-
+.hidden{display:none!important}
 footer{
-  background:#111827;
-  color:white;
-  text-align:center;
-  padding:30px;
-  margin-top:30px;
+  text-align:center;border-top:1px solid var(--line);
+  padding:30px 5%;color:var(--muted)
 }
-
-.hidden{
-  display:none;
+.toast{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  background:#f5f7ff;color:#11182c;padding:13px 20px;
+  border-radius:12px;box-shadow:0 5px 30px #0005;z-index:50;
+  max-width:90%;font-weight:700
 }
-
-@media(max-width:600px){
-
-  header{
-    padding:15px 5%;
-  }
-
-  nav a{
-    margin-left:8px;
-    font-size:12px;
-  }
-
-  .hero{
-    padding:45px 5%;
-  }
-
-  .hero h1{
-    font-size:31px;
-  }
-
-  .section{
-    padding:40px 5%;
-  }
-
-  .section h2{
-    font-size:25px;
-  }
-
-  .planner{
-    padding:20px;
-  }
+@media(max-width:680px){
+  .hero{grid-template-columns:1fr;padding-top:35px}
+  .hero-art{min-height:200px}
+  .orb{width:120px;height:120px;font-size:55px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  header{position:relative}
+  nav{gap:10px}
+  nav a{font-size:12px}
+  .wrap{padding:24px 4%}
+  .stat,.card{padding:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;scroll-behavior:auto!important}
 }
 </style>
 </head>
@@ -252,652 +210,896 @@ footer{
 <body>
 
 <header>
-
-<div class="logo">Kinequill</div>
-
-<nav>
-<a href="#home">Home</a>
-<a href="#planner">Planner</a>
-<a href="#features">Resources</a>
-</nav>
-
+  <div class="logo">Kine<span>quill</span> ✦</div>
+  <nav>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#planner">Study Planner</a>
+    <a href="#practice">Practice</a>
+    <a href="#library">Books</a>
+  </nav>
+  <button class="btn secondary" id="soundButton" onclick="toggleSound()">🔊 Sound ON</button>
 </header>
 
-
-<section class="hero" id="home">
-
-<h1>Study smarter. Plan your BPT journey.</h1>
-
-<p>
-Kinequill is a student-focused platform for BPT notes, MCQs, practical preparation and personalized study planning.
-</p>
-
-<button class="btn" onclick="goPlanner()">
-Create My Study Plan
-</button>
-
+<section class="wrap hero">
+  <div>
+    <span class="eyebrow">YOUR LEARNING ADVENTURE</span>
+    <h1>Turn your syllabus into a <span class="gradient">Study Quest.</span></h1>
+    <p class="muted">
+      Learn concepts. Defeat difficult questions. Correct mistakes.
+      Build your streak and complete your BPT syllabus one mission at a time.
+    </p>
+    <div class="action-row">
+      <button class="btn" onclick="goTo('planner');playSound('click')">▶ Start a Study Quest</button>
+      <button class="btn secondary" onclick="goTo('practice');playSound('click')">🧠 Practice Arena</button>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="orb">📚</div>
+    <div class="art-caption">LEARN · PRACTISE · LEVEL UP</div>
+  </div>
 </section>
 
+<main>
 
-<section class="section">
+<section class="wrap" id="dashboard">
+  <div class="section-head">
+    <div>
+      <h2>🏰 Your Learning Base</h2>
+      <p class="muted">Every completed learning mission moves you forward.</p>
+    </div>
+    <span class="badge" id="levelBadge">LEVEL 1 · ROOKIE</span>
+  </div>
 
-<h2>Explore Your Year</h2>
+  <div class="stats">
+    <div class="stat"><span class="icon">⭐</span><strong id="xp">0</strong><span>Experience points</span></div>
+    <div class="stat"><span class="icon">🔥</span><strong id="streak">0</strong><span>Day streak</span></div>
+    <div class="stat"><span class="icon">✅</span><strong id="completed">0</strong><span>Tasks completed</span></div>
+    <div class="stat"><span class="icon">🎯</span><strong id="accuracy">—</strong><span>MCQ accuracy</span></div>
+  </div>
 
-<div class="cards">
-
-<div class="card">
-<h3>Year 1</h3>
-<p>Build your foundation with basic BPT subjects and concepts.</p>
-</div>
-
-<div class="card">
-<h3>Year 2</h3>
-<p>Organize your core subjects and practical preparation.</p>
-</div>
-
-<div class="card">
-<h3>Year 3</h3>
-<p>Manage advanced physiotherapy learning and clinical preparation.</p>
-</div>
-
-<div class="card">
-<h3>Year 4</h3>
-<p>Prepare systematically for final-year subjects and clinical learning.</p>
-</div>
-
-</div>
-
+  <div class="card">
+    <div class="section-head">
+      <h3>🏆 Next level progress</h3>
+      <span class="small" id="levelProgressText">0 / 100 XP</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="levelBar"></div></div>
+    <h3 style="margin-top:22px">Unlocked achievements</h3>
+    <div id="badges"><span class="muted">Complete missions to earn your first badge.</span></div>
+    <p class="small">XP is a motivational measure, not a measure of academic mastery.</p>
+  </div>
 </section>
 
+<section class="wrap" id="planner">
+  <div class="section-head">
+    <div>
+      <h2>🗺️ Mission Planner</h2>
+      <p class="muted">Turn your pending topics into a study schedule.</p>
+    </div>
+  </div>
 
-<section class="section" id="planner">
+  <div class="card">
+    <div class="field-grid">
+      <div>
+        <label for="year">Academic year</label>
+        <select id="year">
+          <option>Year 1</option><option selected>Year 2</option>
+          <option>Year 3</option><option>Year 4</option>
+        </select>
+      </div>
+      <div>
+        <label for="hours">Study hours per day</label>
+        <input type="number" id="hours" min="1" max="12" value="2">
+      </div>
+      <div>
+        <label for="examDate">Target / exam date</label>
+        <input type="date" id="examDate">
+      </div>
+      <div>
+        <label for="reminderTime">Preferred reminder time</label>
+        <input type="time" id="reminderTime" value="19:00">
+      </div>
+    </div>
 
-<h2>🎯 Personal Study Planner</h2>
+    <label for="subjects">Subjects</label>
+    <input id="subjects" placeholder="Pathology, Pharmacology, Biomechanics">
 
-<div class="planner">
+    <label for="topicInput">Pending topics — one topic per line</label>
+    <textarea id="topicInput" placeholder="Cell injury&#10;Inflammation&#10;Necrosis&#10;Apoptosis"></textarea>
 
-<label>Academic Year</label>
+    <div class="action-row">
+      <button class="btn" onclick="generatePlan()">⚡ Generate my missions</button>
+      <button class="btn secondary" onclick="requestNotifications()">🔔 Enable notifications</button>
+    </div>
+    <p class="small" id="notificationStatus">
+      Browser reminders are best-effort in this version. Keep the page open.
+    </p>
+  </div>
 
-<select id="year">
-
-<option value="1">BPT Year 1</option>
-<option value="2">BPT Year 2</option>
-<option value="3">BPT Year 3</option>
-<option value="4">BPT Year 4</option>
-
-</select>
-
-
-<label>Subjects</label>
-
-<input
-id="subjects"
-type="text"
-placeholder="Example: Pathology, Pharmacology, Biomechanics"
-/>
-
-
-<label>Topics you need to complete</label>
-
-<textarea
-id="topics"
-placeholder="Write one topic per line.
-
-Example:
-Cell injury
-Inflammation
-Necrosis
-Apoptosis
-Degeneration
-Pharmacokinetics
-Drug absorption
-Drug distribution"
-></textarea>
-
-
-<label>Study hours available per day</label>
-
-<input
-id="hours"
-type="number"
-min="1"
-max="12"
-value="2"
-/>
-
-
-<label>Target / Exam Date</label>
-
-<input
-id="examDate"
-type="date"
-/>
-
-
-<button class="btn" onclick="createPlan()">
-Generate Study Plan
-</button>
-
-
-<div id="result" class="result hidden">
-
-<h2>Your Plan</h2>
-
-<p id="planInfo" class="small"></p>
-
-<div class="progress-text">
-Progress: <span id="progressText">0%</span>
-</div>
-
-<div class="progress-box">
-<div class="progress-bar" id="progressBar"></div>
-</div>
-
-<div id="schedule"></div>
-
-</div>
-
-</div>
-
+  <div class="card" style="margin-top:17px">
+    <div class="section-head">
+      <h3>📜 Active missions</h3>
+      <span class="badge" id="taskCount">0 missions</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="taskBar"></div></div>
+    <p class="small" id="taskProgress">No missions generated yet.</p>
+    <div id="taskList"></div>
+  </div>
 </section>
 
+<section class="wrap" id="practice">
+  <h2>⚔️ Practice Arena</h2>
+  <p class="muted">Test your understanding, correct mistakes and practise exam answers.</p>
 
-<section class="section" id="features">
+  <div class="tabs">
+    <button class="active" onclick="openTab('mcqTab',this)">🧠 MCQ Arena</button>
+    <button onclick="openTab('answerTab',this)">✍️ Answer Lab</button>
+    <button onclick="openTab('mistakeTab',this)">🔄 Mistake Clinic</button>
+  </div>
 
-<h2>What Kinequill will offer</h2>
+  <div class="card" id="mcqTab">
+    <h3>Choose carefully. Learn from every answer.</h3>
+    <p class="small">Demo questions for testing. We will expand the verified question bank by subject.</p>
+    <div id="mcqArea"></div>
+  </div>
 
-<div class="cards">
+  <div class="card hidden" id="answerTab">
+    <h3>✍️ Subjective Answer Lab</h3>
+    <p class="muted">
+      Attempt the question first. Then reveal the model answer and compare
+      your work with the marking checklist.
+    </p>
+    <label for="subjectiveSelect">Choose a question</label>
+    <select id="subjectiveSelect" onchange="loadSubjective()"></select>
+    <div class="notice" id="markingGuide"></div>
+    <label for="studentAnswer">Your answer</label>
+    <textarea id="studentAnswer" placeholder="Write your answer in your own words..."></textarea>
+    <div class="action-row">
+      <button class="btn" onclick="saveAnswer()">💾 Save attempt</button>
+      <button class="btn secondary" onclick="showModel()">📖 Reveal model answer</button>
+    </div>
+    <div id="modelAnswer" class="feedback hidden"></div>
+    <div id="answerStatus" class="feedback hidden"></div>
+  </div>
 
-<div class="card">
-<h3>📚 Syllabus</h3>
-<p>Organized BPT syllabus with subjects and topics.</p>
-</div>
-
-<div class="card">
-<h3>📝 Notes</h3>
-<p>Easy-to-understand exam-focused study material.</p>
-</div>
-
-<div class="card">
-<h3>🧠 MCQs</h3>
-<p>Practice questions for revision and self-testing.</p>
-</div>
-
-<div class="card">
-<h3>🩺 Practical & Viva</h3>
-<p>Practical procedures, viva questions and preparation resources.</p>
-</div>
-
-<div class="card">
-<h3>🎯 Smart Planner</h3>
-<p>Create a study schedule according to your available time and target date.</p>
-</div>
-
-<div class="card">
-<h3>📈 Progress Tracking</h3>
-<p>Track completed topics and see your study progress.</p>
-</div>
-
-</div>
-
+  <div class="card hidden" id="mistakeTab">
+    <h3>🔄 Mistake Clinic</h3>
+    <p class="muted">
+      Incorrect answers are learning opportunities. Read the explanation,
+      then retry the question.
+    </p>
+    <div id="mistakeList"></div>
+  </div>
 </section>
 
+<section class="wrap" id="library">
+  <h2>📚 Standard Book Library</h2>
+  <p class="muted">
+    Suggested academic references. Confirm the relevant edition, chapter and
+    depth against your prescribed syllabus.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="big-icon">🔬</div>
+      <h3>Pathology</h3>
+      <p><strong>Robbins & Cotran — Pathologic Basis of Disease</strong></p>
+      <p class="small">Foundational pathology reference. Some chapters may be more advanced than required for BPT.</p>
+    </div>
+    <div class="card">
+      <div class="big-icon">💊</div>
+      <h3>Pharmacology</h3>
+      <p><strong>K. D. Tripathi — Essentials of Medical Pharmacology</strong></p>
+      <p class="small">Reference for general pharmacology and drug classes.</p>
+    </div>
+    <div class="card">
+      <div class="big-icon">🏃</div>
+      <h3>Exercise Therapy</h3>
+      <p><strong>Kisner, Colby & Borstad — Therapeutic Exercise: Foundations and Techniques</strong></p>
+      <p class="small">Reference for therapeutic exercise principles and techniques.</p>
+    </div>
+    <div class="card">
+      <div class="big-icon">🦴</div>
+      <h3>Biomechanics</h3>
+      <p><strong>Nordin & Frankel — Basic Biomechanics of the Musculoskeletal System</strong></p>
+      <p class="small">Reference for musculoskeletal mechanics and movement analysis.</p>
+    </div>
+  </div>
+
+  <div class="notice" style="margin-top:16px">
+    This is an initial reference list, not a verified complete BPT reading list.
+    Kinequill's final library should map each syllabus topic to suitable
+    references and legally accessible resources. It should not reproduce
+    entire copyrighted textbooks without permission.
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>🧭 Your learning rules</h2>
+  <div class="grid">
+    <div class="card"><div class="big-icon">📖</div><h3>Learn</h3><p>Understand the concept before memorising details.</p></div>
+    <div class="card"><div class="big-icon">🧠</div><h3>Recall</h3><p>Answer questions without looking at your notes.</p></div>
+    <div class="card"><div class="big-icon">🩹</div><h3>Correct</h3><p>Review every error and attempt the question again.</p></div>
+    <div class="card"><div class="big-icon">🔁</div><h3>Revise</h3><p>Return to difficult topics and test your understanding.</p></div>
+  </div>
+</section>
+
+</main>
 
 <footer>
-
-<p>© 2026 Kinequill — Built for BPT students</p>
-
+  <div class="logo">Kine<span>quill</span> ✦</div>
+  <p>Learn independently. Practise deliberately. Level up.</p>
+  <p class="small">Study Quest prototype · Progress stored in this browser</p>
 </footer>
 
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
 <script>
-
-let currentTopics = [];
-
-let storageKey = "kinequillStudyPlan";
-
-
-function goPlanner(){
-
-document.getElementById("planner").scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-
-function createPlan(){
-
-let year = document.getElementById("year").value;
-
-let subjects = document.getElementById("subjects").value.trim();
-
-let topicText = document.getElementById("topics").value.trim();
-
-let hours = Number(document.getElementById("hours").value);
-
-let examDate = document.getElementById("examDate").value;
-
-
-if(!subjects){
-
-alert("Please enter your subjects.");
-
-return;
-
-}
-
-
-if(!topicText){
-
-alert("Please enter the topics you want to complete.");
-
-return;
-
-}
-
-
-if(!hours || hours < 1){
-
-alert("Please enter at least 1 study hour per day.");
-
-return;
-
-}
-
-
-if(!examDate){
-
-alert("Please select your target/exam date.");
-
-return;
-
-}
-
-
-currentTopics = topicText
-.split("\n")
-.map(x => x.trim())
-.filter(x => x !== "")
-.map(x => ({
-name:x,
-completed:false
-}));
-
-
-let today = new Date();
-
-today.setHours(0,0,0,0);
-
-let target = new Date(examDate);
-
-target.setHours(0,0,0,0);
-
-
-let difference =
-Math.ceil(
-(target - today) /
-(1000*60*60*24)
-);
-
-
-if(difference <= 0){
-
-alert("Please select a future date.");
-
-return;
-
-}
-
-
-localStorage.setItem(
-storageKey,
-JSON.stringify({
-year,
-subjects,
-hours,
-examDate,
-topics:currentTopics
-})
-);
-
-
-document.getElementById("result")
-.classList.remove("hidden");
-
-
-document.getElementById("planInfo").innerText =
-"BPT Year " + year +
-" • " +
-subjects +
-" • " +
-hours +
-" hours/day • " +
-difference +
-" days available";
-
-
-makeSchedule(difference, hours);
-
-updateProgress();
-
-}
-
-
-function makeSchedule(days, hours){
-
-let schedule = document.getElementById("schedule");
-
-schedule.innerHTML = "";
-
-
-let totalTopics = currentTopics.length;
-
-
-/*
-Approximate topics per day.
-The planner spreads topics across
-the available days.
-*/
-
-let topicsPerDay =
-Math.max(
-1,
-Math.ceil(totalTopics / days)
-);
-
-
-let topicIndex = 0;
-
-
-for(let day=1; day<=days && topicIndex<totalTopics; day++){
-
-let box = document.createElement("div");
-
-box.className = "day";
-
-
-let heading =
-document.createElement("h3");
-
-heading.innerText =
-"Day " + day;
-
-
-box.appendChild(heading);
-
-
-let count = 0;
-
-
-while(
-topicIndex < totalTopics &&
-count < topicsPerDay
-){
-
-let topic = currentTopics[topicIndex];
-
-
-let row =
-document.createElement("label");
-
-row.className = "topic";
-
-
-let checkbox =
-document.createElement("input");
-
-checkbox.type = "checkbox";
-
-checkbox.checked = topic.completed;
-
-
-checkbox.onchange = function(){
-
-topic.completed = checkbox.checked;
-
-savePlan();
-
-updateProgress();
-
+"use strict";
+
+const STORAGE_KEY = "kinequill_study_quest_v1";
+
+const defaults = {
+  xp:0,
+  tasks:[],
+  streak:0,
+  lastStudyDate:"",
+  studyDates:[],
+  mcqResults:{},
+  mistakes:[],
+  subjective:{},
+  sound:true,
+  plan:null
 };
 
+let state = loadState();
+let currentQuestion = 0;
+let submittedQuestions = {};
+let audioContext = null;
+let reminderTimeout = null;
+let toastTimeout = null;
 
-let text =
-document.createElement("span");
+const questionBank = [
+  {
+    id:"q1",
+    subject:"Pathology",
+    question:"An increase in the size of individual cells is called:",
+    options:["Hyperplasia","Hypertrophy","Atrophy","Metaplasia"],
+    answer:1,
+    explanation:"Hypertrophy is an increase in cell size. Hyperplasia is an increase in cell number."
+  },
+  {
+    id:"q2",
+    subject:"Pathology",
+    question:"Which process is a form of regulated programmed cell death?",
+    options:["Apoptosis","Hypertrophy","Hyperplasia","Metaplasia"],
+    answer:0,
+    explanation:"Apoptosis is regulated cell death. Necrosis is cell death associated with loss of membrane integrity and tissue injury."
+  },
+  {
+    id:"q3",
+    subject:"Pathology",
+    question:"Which mediator can contribute to increased vascular permeability in acute inflammation?",
+    options:["Histamine","Insulin","Thyroxine","Haemoglobin"],
+    answer:0,
+    explanation:"Histamine released by mast cells can cause vasodilation and increased vascular permeability in acute inflammation."
+  },
+  {
+    id:"q4",
+    subject:"Pathology",
+    question:"Which term means an increase in the number of cells in a tissue?",
+    options:["Atrophy","Hyperplasia","Hypertrophy","Dysplasia"],
+    answer:1,
+    explanation:"Hyperplasia refers to an increase in cell number. Hypertrophy refers to an increase in cell size."
+  }
+];
 
-text.innerText = topic.name;
+const subjectiveBank = [
+  {
+    id:"s1",
+    question:"Define acute inflammation and describe its vascular events. (5 marks)",
+    guide:"Suggested structure: definition, brief introduction, vasodilation, increased vascular permeability, resulting changes and a labelled diagram where appropriate.",
+    model:"MODEL ANSWER — STUDY GUIDE\n\nDefinition:\nAcute inflammation is a rapid, short-duration response of vascularised tissue to injury or infection, involving vascular changes and recruitment of inflammatory cells.\n\nVascular events:\n1. Transient vasoconstriction may occur immediately after injury.\n2. Vasodilation increases local blood flow and contributes to redness and warmth.\n3. Increased vascular permeability allows protein-rich fluid to enter the interstitial tissue.\n4. Fluid accumulation produces inflammatory swelling (exudate).\n5. Slower blood flow contributes to vascular stasis and supports leukocyte recruitment.\n\nExam tip: Explain the sequence clearly and add a labelled diagram when appropriate.",
+    checklist:["Accurate definition","Vasodilation","Increased vascular permeability","Exudate or oedema","Logical sequence and diagram where relevant"]
+  },
+  {
+    id:"s2",
+    question:"Differentiate hypertrophy and hyperplasia. (3 marks)",
+    guide:"Define both terms. Compare cell size with cell number and provide suitable examples.",
+    model:"MODEL ANSWER — STUDY GUIDE\n\nHypertrophy: Increase in the size of individual cells, resulting in enlargement of a tissue or organ. Example: skeletal muscle enlargement in response to resistance training.\n\nHyperplasia: Increase in the number of cells in a tissue or organ due to cell proliferation.\n\nKey difference: Hypertrophy increases cell size; hyperplasia increases cell number.",
+    checklist:["Definition of hypertrophy","Definition of hyperplasia","Cell size versus cell number","Suitable examples"]
+  }
+];
 
-
-if(topic.completed){
-
-text.classList.add("completed");
-
+function loadState(){
+  try{
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? Object.assign({},defaults,JSON.parse(saved)) :
+      Object.assign({},defaults);
+  }catch(e){
+    return Object.assign({},defaults);
+  }
 }
 
-
-checkbox.addEventListener(
-"change",
-function(){
-
-if(checkbox.checked){
-
-text.classList.add("completed");
-
-}else{
-
-text.classList.remove("completed");
-
+function persist(){
+  try{
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+  }catch(e){
+    showToast("Browser storage is unavailable. Your changes may not persist.");
+  }
+  renderDashboard();
 }
 
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+  });
+}
+
+function goTo(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+function showToast(message){
+  const el=document.getElementById("toast");
+  el.textContent=message;
+  el.classList.remove("hidden");
+  clearTimeout(toastTimeout);
+  toastTimeout=setTimeout(()=>el.classList.add("hidden"),2600);
+}
+
+function playSound(type){
+  if(!state.sound)return;
+
+  try{
+    const AudioCtx=window.AudioContext||window.webkitAudioContext;
+    if(!AudioCtx)return;
+
+    if(!audioContext)audioContext=new AudioCtx();
+    if(audioContext.state==="suspended")audioContext.resume();
+
+    const patterns={
+      click:[440],
+      correct:[523,659,784],
+      wrong:[240,190],
+      reward:[523,659,784,1047],
+      level:[392,523,659,784]
+    };
+
+    const notes=patterns[type]||patterns.click;
+
+    notes.forEach((freq,i)=>{
+      const osc=audioContext.createOscillator();
+      const gain=audioContext.createGain();
+
+      osc.type="sine";
+      osc.frequency.value=freq;
+      gain.gain.setValueAtTime(.0001,audioContext.currentTime+i*.12);
+      gain.gain.exponentialRampToValueAtTime(.12,audioContext.currentTime+i*.12+.02);
+      gain.gain.exponentialRampToValueAtTime(.0001,audioContext.currentTime+i*.12+.16);
+
+      osc.connect(gain);
+      gain.connect(audioContext.destination);
+      osc.start(audioContext.currentTime+i*.12);
+      osc.stop(audioContext.currentTime+i*.12+.18);
+    });
+  }catch(e){}
+}
+
+function toggleSound(){
+  state.sound=!state.sound;
+  document.getElementById("soundButton").textContent=
+    state.sound?"🔊 Sound ON":"🔇 Sound OFF";
+  persist();
+  if(state.sound)playSound("reward");
+  showToast(state.sound?"Sound effects enabled":"Sound effects muted");
+}
+
+function todayString(){
+  const d=new Date();
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+}
+
+function recordStudy(){
+  const today=todayString();
+
+  if(state.lastStudyDate!==today){
+    if(!state.lastStudyDate){
+      state.streak=1;
+    }else{
+      const prev=new Date(state.lastStudyDate+"T00:00:00");
+      const now=new Date(today+"T00:00:00");
+      const gap=Math.round((now-prev)/86400000);
+      state.streak=gap===1?state.streak+1:1;
+    }
+    state.lastStudyDate=today;
+  }
+
+  if(!state.studyDates.includes(today))state.studyDates.push(today);
+}
+
+function awardXP(points){
+  const before=Math.floor(state.xp/100);
+  state.xp+=points;
+  const after=Math.floor(state.xp/100);
+
+  if(after>before){
+    playSound("level");
+    showToast("🎉 Level up! You reached level "+(after+1)+"!");
+  }
+}
+
+function renderDashboard(){
+  document.getElementById("xp").textContent=state.xp;
+  document.getElementById("streak").textContent=state.streak;
+
+  const done=state.tasks.filter(t=>t.done).length;
+  document.getElementById("completed").textContent=done;
+
+  const total=state.tasks.length;
+  const pct=total?Math.round(done/total*100):0;
+
+  document.getElementById("taskBar").style.width=pct+"%";
+  document.getElementById("taskProgress").textContent=
+    total?done+" of "+total+" missions completed ("+pct+"%)":
+    "Generate your first study plan to begin.";
+
+  document.getElementById("taskCount").textContent=
+    total+" mission"+(total===1?"":"s");
+
+  const results=Object.values(state.mcqResults);
+  const tries=results.reduce((n,r)=>n+r.total,0);
+  const correct=results.reduce((n,r)=>n+r.correct,0);
+
+  document.getElementById("accuracy").textContent=
+    tries?Math.round(correct/tries*100)+"%":"—";
+
+  const level=Math.floor(state.xp/100)+1;
+  const current=state.xp%100;
+
+  const titles=["Rookie","Apprentice","Scholar","Specialist","Expert","Master","Legend"];
+  const title=titles[Math.min(level-1,titles.length-1)];
+
+  document.getElementById("levelBadge").textContent=
+    "LEVEL "+level+" · "+title.toUpperCase();
+
+  document.getElementById("levelProgressText").textContent=
+    current+" / 100 XP";
+
+  document.getElementById("levelBar").style.width=current+"%";
+
+  const badges=[];
+  if(done>=1)badges.push("🌱 First Mission");
+  if(done>=5)badges.push("📚 Five Missions");
+  if(done>=10)badges.push("🎯 Focused Scholar");
+  if(state.streak>=3)badges.push("🔥 3-Day Streak");
+  if(state.streak>=7)badges.push("🏆 7-Day Streak");
+  if(correct>=10)badges.push("🧠 Knowledge Builder");
+  if(state.mistakes.length>=3)badges.push("🔄 Error Explorer");
+
+  document.getElementById("badges").innerHTML=badges.length?
+    badges.map(b=>'<span class="badge">'+b+'</span>').join(""):
+    '<span class="muted">Your first achievement is waiting.</span>';
+
+  renderTasks();
+  renderMistakes();
+}
+
+function generatePlan(){
+  const subjects=document.getElementById("subjects").value.trim();
+  const lines=document.getElementById("topicInput").value
+    .split("\n").map(s=>s.trim()).filter(Boolean);
+  const hours=Number(document.getElementById("hours").value);
+  const date=document.getElementById("examDate").value;
+
+  if(!subjects){showToast("Enter your subjects first.");return;}
+  if(!lines.length){showToast("Enter at least one pending topic.");return;}
+  if(hours<1||hours>12){showToast("Choose between 1 and 12 hours.");return;}
+  if(!date){showToast("Choose your target date.");return;}
+
+  const today=new Date();
+  today.setHours(0,0,0,0);
+  const target=new Date(date+"T00:00:00");
+  const days=Math.ceil((target-today)/86400000);
+
+  if(days<1){showToast("Choose a future date.");return;}
+
+  const old=new Map(state.tasks.map(t=>[t.name.toLowerCase(),t]));
+  const perDay=Math.max(1,Math.ceil(lines.length/days));
+
+  state.tasks=lines.map((name,i)=>{
+    const existing=old.get(name.toLowerCase());
+
+    if(existing)return existing;
+
+    return {
+      id:"task_"+Date.now()+"_"+i,
+      name,
+      subject:subjects,
+      day:Math.floor(i/perDay)+1,
+      done:false,
+      rewarded:false
+    };
+  });
+
+  state.plan={
+    year:document.getElementById("year").value,
+    subjects,
+    hours,
+    date,
+    dailyTarget:perDay,
+    totalDays:days
+  };
+
+  persist();
+  playSound("reward");
+  showToast("🗺️ Your study missions are ready!");
+  goTo("taskList");
+}
+
+function renderTasks(){
+  const el=document.getElementById("taskList");
+
+  if(!state.tasks.length){
+    el.innerHTML='<p class="muted">Your missions will appear here.</p>';
+    return;
+  }
+
+  el.innerHTML=state.tasks.map(t=>`
+    <div class="task">
+      <input type="checkbox" ${t.done?"checked":""}
+        aria-label="Complete ${escapeHTML(t.name)}"
+        onchange="toggleTask('${t.id}',this.checked)">
+      <div class="task-name ${t.done?"done":""}">
+        <strong>${escapeHTML(t.name)}</strong>
+        <div class="small">${escapeHTML(t.subject||"Study topic")} · Day ${t.day||1}</div>
+      </div>
+      <div class="task-actions">
+        <button class="btn secondary" onclick="editTask('${t.id}')">Edit</button>
+        <button class="btn danger" onclick="deleteTask('${t.id}')">×</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function toggleTask(id,checked){
+  const task=state.tasks.find(t=>t.id===id);
+  if(!task)return;
+
+  if(checked&&!task.done){
+    task.done=true;
+    recordStudy();
+
+    if(!task.rewarded){
+      task.rewarded=true;
+      awardXP(10);
+    }
+
+    playSound("correct");
+    showToast("✨ Mission complete! +10 XP");
+  }else if(!checked&&task.done){
+    task.done=false;
+    showToast("Mission reopened. Complete it when ready.");
+  }
+
+  persist();
+}
+
+function editTask(id){
+  const t=state.tasks.find(t=>t.id===id);
+  if(!t)return;
+
+  const value=prompt("Edit your topic:",t.name);
+  if(value&&value.trim()){
+    t.name=value.trim();
+    persist();
+    playSound("click");
+  }
+}
+
+function deleteTask(id){
+  if(!confirm("Remove this mission?"))return;
+  state.tasks=state.tasks.filter(t=>t.id!==id);
+  persist();
+}
+
+function openTab(id,button){
+  ["mcqTab","answerTab","mistakeTab"].forEach(tab=>{
+    document.getElementById(tab).classList.toggle("hidden",tab!==id);
+  });
+
+  document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+  button.classList.add("active");
+  playSound("click");
+}
+
+function renderMCQ(){
+  const q=questionBank[currentQuestion];
+  const prev=submittedQuestions[q.id];
+
+  let html=`
+    <div class="question">
+      <span class="badge">${escapeHTML(q.subject)}</span>
+      <p class="small">Question ${currentQuestion+1} of ${questionBank.length}</p>
+      <h3>${escapeHTML(q.question)}</h3>
+  `;
+
+  q.options.forEach((option,i)=>{
+    html+=`
+      <label class="option">
+        <input type="radio" name="mcqChoice" value="${i}"
+          ${prev&&prev.choice===i?"checked":""}
+          ${prev&&prev.submitted?"disabled":""}>
+        <span>${escapeHTML(option)}</span>
+      </label>
+    `;
+  });
+
+  html+=`
+      <div class="action-row">
+        <button class="btn" onclick="submitMCQ()">Check answer</button>
+        <button class="btn secondary" onclick="nextMCQ()">Next →</button>
+      </div>
+  `;
+
+  if(prev&&prev.submitted){
+    html+=`
+      <div class="feedback">
+        ${prev.correct?"✅ Correct!":"❌ Not correct yet."}
+        <br><br><strong>Explanation:</strong>
+        ${escapeHTML(q.explanation)}
+        <br><br>
+        <button class="btn secondary" onclick="retryCurrent()">🔄 Try again</button>
+      </div>
+    `;
+  }
+
+  html+="</div>";
+  document.getElementById("mcqArea").innerHTML=html;
+}
+
+function submitMCQ(){
+  const q=questionBank[currentQuestion];
+  const selected=document.querySelector('input[name="mcqChoice"]:checked');
+
+  if(!selected){showToast("Choose an answer first.");return;}
+
+  if(submittedQuestions[q.id]?.submitted){
+    showToast("Use Try again to make a new attempt.");
+    return;
+  }
+
+  const choice=Number(selected.value);
+  const correct=choice===q.answer;
+
+  submittedQuestions[q.id]={choice,correct,submitted:true};
+
+  if(!state.mcqResults[q.id]){
+    state.mcqResults[q.id]={total:0,correct:0};
+  }
+
+  state.mcqResults[q.id].total++;
+
+  if(correct){
+    state.mcqResults[q.id].correct++;
+    awardXP(15);
+    recordStudy();
+    playSound("correct");
+    showToast("🎯 Correct answer! +15 XP");
+  }else{
+    state.mistakes.unshift({
+      id:"mistake_"+Date.now(),
+      questionId:q.id,
+      question:q.question,
+      chosen:q.options[choice],
+      correct:q.options[q.answer],
+      explanation:q.explanation,
+      reviewed:false
+    });
+
+    playSound("wrong");
+    showToast("Mistake saved. Review the explanation and retry.");
+  }
+
+  persist();
+  renderMCQ();
+}
+
+function nextMCQ(){
+  currentQuestion=(currentQuestion+1)%questionBank.length;
+  renderMCQ();
+  playSound("click");
+}
+
+function retryCurrent(){
+  const id=questionBank[currentQuestion].id;
+  delete submittedQuestions[id];
+  renderMCQ();
+  playSound("click");
+}
+
+function populateSubjective(){
+  document.getElementById("subjectiveSelect").innerHTML=
+    subjectiveBank.map((q,i)=>
+      `<option value="${i}">${escapeHTML(q.question)}</option>`
+    ).join("");
+
+  loadSubjective();
+}
+
+function loadSubjective(){
+  const q=subjectiveBank[Number(document.getElementById("subjectiveSelect").value)];
+
+  document.getElementById("markingGuide").textContent=q.guide;
+  document.getElementById("modelAnswer").classList.add("hidden");
+  document.getElementById("answerStatus").classList.add("hidden");
+
+  document.getElementById("studentAnswer").value=
+    state.subjective[q.id]?.answer||"";
+}
+
+function saveAnswer(){
+  const q=subjectiveBank[Number(document.getElementById("subjectiveSelect").value)];
+  const answer=document.getElementById("studentAnswer").value.trim();
+
+  if(answer.length<10){
+    showToast("Write a little more before saving your attempt.");
+    return;
+  }
+
+  const old=state.subjective[q.id]||{attempts:0};
+  state.subjective[q.id]={
+    answer,
+    attempts:old.attempts+1,
+    date:todayString()
+  };
+
+  awardXP(5);
+  recordStudy();
+  persist();
+  playSound("reward");
+
+  document.getElementById("answerStatus").textContent=
+    "Attempt saved. Compare it with the model answer and tick each marking point you covered. This version does not automatically grade free-text answers.";
+
+  document.getElementById("answerStatus").classList.remove("hidden");
+  showToast("✍️ Answer saved! +5 XP");
+}
+
+function showModel(){
+  const q=subjectiveBank[Number(document.getElementById("subjectiveSelect").value)];
+  const el=document.getElementById("modelAnswer");
+
+  el.textContent=q.model+
+    "\n\nSELF-ASSESSMENT CHECKLIST\n"+
+    q.checklist.map(item=>"□ "+item).join("\n");
+
+  el.classList.remove("hidden");
+  playSound("click");
+}
+
+function renderMistakes(){
+  const el=document.getElementById("mistakeList");
+
+  if(!state.mistakes.length){
+    el.innerHTML='<p class="muted">No mistakes recorded yet. Incorrect MCQ answers will appear here.</p>';
+    return;
+  }
+
+  el.innerHTML=state.mistakes.map(m=>`
+    <div class="question">
+      <strong>${escapeHTML(m.question)}</strong>
+      <p>Your answer: ${escapeHTML(m.chosen)}</p>
+      <p>Correct answer: <strong>${escapeHTML(m.correct)}</strong></p>
+      <p>${escapeHTML(m.explanation)}</p>
+      <div class="action-row">
+        <button class="btn secondary" onclick="retryMistake('${m.questionId}')">Retry question</button>
+        <button class="btn secondary" onclick="markReviewed('${m.id}')">Mark reviewed</button>
+      </div>
+      ${m.reviewed?'<span class="badge">Reviewed ✓</span>':""}
+    </div>
+  `).join("");
+}
+
+function retryMistake(id){
+  const index=questionBank.findIndex(q=>q.id===id);
+  if(index<0)return;
+
+  currentQuestion=index;
+  delete submittedQuestions[id];
+  renderMCQ();
+
+  openTab("mcqTab",document.querySelector(".tabs button"));
+  goTo("practice");
+}
+
+function markReviewed(id){
+  const m=state.mistakes.find(x=>x.id===id);
+  if(m){
+    m.reviewed=true;
+    persist();
+    showToast("Mistake marked as reviewed.");
+  }
+}
+
+async function requestNotifications(){
+  if(!("Notification" in window)){
+    document.getElementById("notificationStatus").textContent=
+      "This browser does not support notifications.";
+    return;
+  }
+
+  try{
+    const permission=await Notification.requestPermission();
+
+    if(permission==="granted"){
+      document.getElementById("notificationStatus").textContent=
+        "Notifications allowed. Keep this page open for scheduled reminders in this prototype.";
+      scheduleReminder();
+      showToast("🔔 Reminder permission enabled.");
+    }else{
+      document.getElementById("notificationStatus").textContent=
+        "Notifications are blocked. Change browser site settings if you want to enable them.";
+    }
+  }catch(e){
+    document.getElementById("notificationStatus").textContent=
+      "Notifications could not be enabled in this browser.";
+  }
+}
+
+function scheduleReminder(){
+  if(reminderTimeout)clearTimeout(reminderTimeout);
+
+  const value=document.getElementById("reminderTime").value||"19:00";
+  const [hour,minute]=value.split(":").map(Number);
+
+  const now=new Date();
+  const next=new Date();
+
+  next.setHours(hour,minute,0,0);
+  if(next<=now)next.setDate(next.getDate()+1);
+
+  reminderTimeout=setTimeout(()=>{
+    const pending=state.tasks.filter(t=>!t.done).length;
+
+    if("Notification" in window&&Notification.permission==="granted"){
+      try{
+        new Notification("Kinequill — Study Quest",{
+          body:pending?
+            "You have "+pending+" pending missions. Open your planner to continue.":
+            "Time for your planned study session. Review your learning goals."
+        });
+      }catch(e){}
+    }
+
+    scheduleReminder();
+  },next-now);
+}
+
+document.getElementById("reminderTime").addEventListener("change",()=>{
+  if("Notification" in window&&Notification.permission==="granted"){
+    scheduleReminder();
+  }
 });
 
+function initialise(){
+  document.getElementById("soundButton").textContent=
+    state.sound?"🔊 Sound ON":"🔇 Sound OFF";
 
-row.appendChild(checkbox);
+  if(state.plan){
+    document.getElementById("year").value=state.plan.year||"Year 2";
+    document.getElementById("subjects").value=state.plan.subjects||"";
+    document.getElementById("hours").value=state.plan.hours||2;
+    document.getElementById("examDate").value=state.plan.date||"";
+    document.getElementById("topicInput").value=
+      state.tasks.map(t=>t.name).join("\n");
+  }
 
-row.appendChild(text);
-
-box.appendChild(row);
-
-
-topicIndex++;
-
-count++;
-
+  renderDashboard();
+  renderMCQ();
+  populateSubjective();
 }
 
-
-let study =
-document.createElement("p");
-
-study.className = "small";
-
-study.innerText =
-"Suggested study time: " +
-hours +
-" hour(s)";
-
-
-box.appendChild(study);
-
-schedule.appendChild(box);
-
-}
-
-}
-
-
-function updateProgress(){
-
-let total = currentTopics.length;
-
-
-if(total === 0){
-
-return;
-
-}
-
-
-let completed =
-currentTopics.filter(
-x => x.completed
-).length;
-
-
-let percent =
-Math.round(
-(completed / total) * 100
-);
-
-
-document.getElementById(
-"progressText"
-).innerText =
-percent + "%";
-
-
-document.getElementById(
-"progressBar"
-).style.width =
-percent + "%";
-
-
-savePlan();
-
-}
-
-
-function savePlan(){
-
-let old =
-localStorage.getItem(storageKey);
-
-
-if(!old){
-
-return;
-
-}
-
-
-let data =
-JSON.parse(old);
-
-
-data.topics =
-currentTopics;
-
-
-localStorage.setItem(
-storageKey,
-JSON.stringify(data)
-);
-
-}
-
-
-function loadPlan(){
-
-let saved =
-localStorage.getItem(storageKey);
-
-
-if(!saved){
-
-return;
-
-}
-
-
-try{
-
-let data =
-JSON.parse(saved);
-
-
-currentTopics =
-data.topics || [];
-
-
-document.getElementById("year").value =
-data.year || "1";
-
-
-document.getElementById("subjects").value =
-data.subjects || "";
-
-
-document.getElementById("hours").value =
-data.hours || 2;
-
-
-document.getElementById("examDate").value =
-data.examDate || "";
-
-
-if(currentTopics.length > 0){
-
-document.getElementById("result")
-.classList.remove("hidden");
-
-
-let today = new Date();
-
-today.setHours(0,0,0,0);
-
-let target =
-new Date(data.examDate);
-
-target.setHours(0,0,0,0);
-
-
-let days =
-Math.max(
-1,
-Math.ceil(
-(target-today) /
-(1000*60*60*24)
-)
-);
-
-
-document.getElementById("planInfo").innerText =
-"BPT Year " +
-data.year +
-" • " +
-data.subjects +
-" • " +
-data.hours +
-" hours/day";
-
-
-makeSchedule(
-days,
-Number(data.hours)
-);
-
-
-updateProgress();
-
-}
-
-}catch(error){
-
-console.log("No saved plan found.");
-
-}
-
-}
-
-
-window.onload =
-function(){
-
-loadPlan();
-
-};
-
+initialise();
 </script>
 
 </body>
