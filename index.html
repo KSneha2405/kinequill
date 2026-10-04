@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kinequill | BPT Learning Platform</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  color: #172033;
+}
+
+header {
+  background: #172033;
+  color: white;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.tagline {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.hero {
+  text-align: center;
+  padding: 65px 20px;
+  background: white;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #5d6675;
+  margin-bottom: 28px;
+}
+
+.search {
+  width: 90%;
+  max-width: 600px;
+  padding: 15px 18px;
+  border: 1px solid #ccd2da;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.section {
+  padding: 45px 7%;
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.years {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid #e1e5eb;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 21px;
+}
+
+.card p {
+  color: #667085;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+button {
+  border: none;
+  background: #172033;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.feature {
+  background: white;
+  padding: 22px;
+  border-radius: 12px;
+  border: 1px solid #e1e5eb;
+}
+
+.feature h3 {
+  margin-bottom: 8px;
+}
+
+.feature p {
+  color: #667085;
+  line-height: 1.5;
+}
+
+footer {
+  background: #172033;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 30px;
+}
+
+#message {
+  text-align: center;
+  margin-top: 20px;
+  color: #667085;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Kinequill</div>
+  <div class="tagline">BPT Learning Platform</div>
+</header>
+
+<section class="hero">
+  <h1>Learn BPT. Understand Better.</h1>
+  <p>A free learning platform designed for Bachelor of Physiotherapy students.</p>
+
+  <input
+    type="text"
+    class="search"
+    id="searchBox"
+    placeholder="Search subjects, notes, MCQs..."
+    onkeyup="searchContent()"
+  >
+</section>
+
+<section class="section">
+  <h2>BPT Academic Years</h2>
+
+  <div class="years">
+
+    <div class="card searchable">
+      <h3>Year 1</h3>
+      <p>Explore first-year BPT subjects, study material and practice resources.</p>
+      <button onclick="showMessage('Year 1 content will be added here.')">
+        Explore
+      </button>
+    </div>
+
+    <div class="card searchable">
+      <h3>Year 2</h3>
+      <p>Explore second-year BPT subjects, study material and practice resources.</p>
+      <button onclick="showMessage('Year 2 content will be added here.')">
+        Explore
+      </button>
+    </div>
+
+    <div class="card searchable">
+      <h3>Year 3</h3>
+      <p>Explore third-year BPT subjects, study material and practice resources.</p>
+      <button onclick="showMessage('Year 3 content will be added here.')">
+        Explore
+      </button>
+    </div>
+
+    <div class="card searchable">
+      <h3>Year 4</h3>
+      <p>Explore fourth-year BPT subjects, study material and practice resources.</p>
+      <button onclick="showMessage('Year 4 content will be added here.')">
+        Explore
+      </button>
+    </div>
+
+  </div>
+
+  <div id="message"></div>
+</section>
+
+<section class="section">
+  <h2>What Kinequill Will Offer</h2>
+
+  <div class="features">
+
+    <div class="feature searchable">
+      <h3>📚 Syllabus</h3>
+      <p>Organized BPT syllabus and subject-wise learning structure.</p>
+    </div>
+
+    <div class="feature searchable">
+      <h3>📖 Notes</h3>
+      <p>Easy-to-understand study material for BPT students.</p>
+    </div>
+
+    <div class="feature searchable">
+      <h3>📝 MCQs</h3>
+      <p>Practice questions for revision and examination preparation.</p>
+    </div>
+
+    <div class="feature searchable">
+      <h3>🎯 Viva & Practical</h3>
+      <p>Resources for practical examinations and viva preparation.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Kinequill. Free BPT Learning Platform.</p>
+</footer>
+
+<script>
+
+function showMessage(text) {
+  document.getElementById("message").innerText = text;
+}
+
+function searchContent() {
+
+  let query = document
+    .getElementById("searchBox")
+    .value
+    .toLowerCase();
+
+  let items = document.querySelectorAll(".searchable");
+
+  items.forEach(function(item) {
+
+    let text = item.innerText.toLowerCase();
+
+    if (text.includes(query)) {
+      item.style.display = "";
+    } else {
+      item.style.display = "none";
+    }
+
+  });
+}
+
+</script>
+
+</body>
+</html>
